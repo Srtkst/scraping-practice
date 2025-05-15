@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>スクレイピング課題: レビュー一覧</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <h1>スクレイピング課題: レビュー一覧</h1>
+  <p><a href="../index.html">← 解説ページへ戻る</a></p>
+
+  <h2>初級</h2>
+  <div class="challenge">
+    <h3>すべてのレビュワー名とコメントを取得してください。</h3>
+    <p><strong>ヒント:</strong> `.review` の中に `.comment` とレビュワー名があります。</p>
+    <pre><code>for r in soup.select(".review"):
+    print(r.text)</code></pre>
+  </div>
+
+  <h2>中級</h2>
+  <div class="challenge">
+    <h3>★4以上のレビューのみを抽出してください。</h3>
+    <p><strong>ヒント:</strong> `.stars` の中の `★` の数を `count("★")` で数える</p>
+    <pre><code>stars = r.select_one(".stars").text
+if stars.count("★") &gt;= 4:
+    print(...)</code></pre>
+  </div>
+
+  <h2>用語解説</h2>
+  <ul>
+    <li><a href="../glossary.html#loop">ループ</a></li>
+    <li><a href="../glossary.html#count">文字列のカウント</a></li>
+  </ul>
+</body>
+</html>
