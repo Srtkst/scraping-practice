@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>スクレイピング用語集</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <script>
+        function searchGlossary() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const entries = document.querySelectorAll("h3");
+
+            entries.forEach(entry => {
+                const keyword = entry.textContent.toLowerCase();
+                const paragraph = entry.nextElementSibling;
+
+                if (keyword.includes(input)) {
+                    entry.style.display = "";
+                    if (paragraph) paragraph.style.display = "";
+                } else {
+                    entry.style.display = "none";
+                    if (paragraph) paragraph.style.display = "none";
+                }
+            });
+
+            // 「見つかりませんでした」の表示
+            const noResultMessage = document.getElementById("noResultMessage");
+            if (found === false && input !== "") {
+                noResultMessage.style.display = "block";
+            } else {
+                noResultMessage.style.display = "none";
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <h1>スクレイピング用語集</h1>
+    <p>このページでは、WebスクレイピングやHTML、Pythonに関する用語をやさしく解説します。</p>
+
+    <h2>目次</h2>
+    <ul>
+        <li><a href="#html-structure">🧱 HTMLの構造とタグ</a></li>
+        <li><a href="#selectors">🔎 セレクタと要素の取得</a></li>
+        <li><a href="#python-basics">🐍 Pythonの基本文法</a></li>
+        <li><a href="#data-processing">🧰 データ処理のテクニック</a></li>
+        <li><a href="#web-concepts">🌐 Webの仕組み</a></li>
+    </ul>
+    <h2>🔍 用語検索</h2>
+        <input type="text" id="searchInput" onkeyup="searchGlossary()" placeholder="用語を入力してください..." style="width: 100%; padding: 10px; font-size: 16px; margin-bottom: 20px;">
+
+    <hr>
+
+    <h2 id="html-structure">🧱 HTMLの構造とタグ</h2>
+
+    <h3 id="html">HTML</h3>
+    <p>Webページの「文章の構造」を書くための言語。見出し、段落、画像、リンクなどをタグで表します。</p>
+
+    <h3 id="tag">タグ</h3>
+    <p>&lt;h1&gt;, &lt;p&gt;, &lt;div&gt; など、HTMLの命令のこと。タグで囲むことで意味を伝えます。</p>
+
+    <h3 id="div">&lt;div&gt;</h3>
+    <p>Webページ内に「箱」を作るためのタグ。中に複数の要素をまとめて入れることができます。</p>
+
+    <h3 id="span">&lt;span&gt;</h3>
+    <p>文章の一部だけに装飾や意味を持たせたいときに使う小さなタグ。</p>
+
+    <h3 id="attribute">属性（attribute）</h3>
+    <p>タグに追加情報を与える部分。例：<code>&lt;a href="url"&gt;</code> の <code>href</code> が属性です。</p>
+
+    <h3 id="class">クラス（class）</h3>
+    <p>HTML要素に名前をつけて管理するための属性。デザインやスクレイピングの対象指定に使います。</p>
+
+    <hr>
+
+    <h2 id="selectors">🔎 セレクタと要素の取得</h2>
+
+    <h3 id="selector">セレクタ</h3>
+    <p>HTMLの中から特定の要素を選ぶための指定方法。例：<code>.title</code> は class="title" の要素を意味します。</p>
+
+    <h3 id="select">select()</h3>
+    <p>複数の要素を一気に取り出すための関数。リストで返されます。</p>
+
+    <h3 id="select_one">select_one()</h3>
+    <p>1つだけ要素を取り出す関数。見つかった最初の要素を返します。</p>
+
+    <h3 id="find">find()</h3>
+    <p>最初に見つかった要素を返します。HTMLタグ名で指定するのが一般的。</p>
+
+    <h3 id="find_all">find_all()</h3>
+    <p>指定したタグ名に一致する要素をすべて取得して、リストで返します。</p>
+
+    <h3 id="get">get()</h3>
+    <p>要素の属性（hrefなど）を取得するためのメソッド。例：<code>tag.get("href")</code></p>
+
+    <h3 id="attrs">attrs</h3>
+    <p>要素の属性を辞書形式でまとめて取得できます。例：<code>tag.attrs["src"]</code></p>
+
+    <h3 id="text">text属性</h3>
+    <p>HTML要素の中身（文字）を取り出すためのプロパティ。</p>
+
+    <hr>
+
+    <h2 id="python-basics">🐍 Pythonの基本文法</h2>
+
+    <h3 id="variable">変数</h3>
+    <p>データを保存するための「名前付きの箱」。例：<code>price = 3000</code></p>
+
+    <h3 id="list">リスト</h3>
+    <p>複数のデータを順番に並べて管理するデータ型。例：<code>["りんご", "バナナ", "みかん"]</code></p>
+
+    <h3 id="dict">辞書（dictionary）</h3>
+    <p>キーと値のペアでデータを保存するデータ型。例：<code>{"name": "りんご", "price": 100}</code></p>
+
+    <h3 id="for">for文</h3>
+    <p>同じ処理を繰り返すための構文。リストなどを1つずつ取り出して処理します。</p>
+
+    <h3 id="if">if文</h3>
+    <p>「もし〇〇なら」という条件をつけて処理を分けます。例：<code>if x > 100:</code></p>
+
+    <h3 id="print">print()</h3>
+    <p>データを画面に表示するための関数。デバッグや確認に便利です。</p>
+
+    <h3 id="int">int()</h3>
+    <p>文字列などを整数に変換する関数。例：<code>int("100")</code> → <code>100</code></p>
+
+    <h3 id="try">try...except</h3>
+    <p>エラーが出そうな処理を安全に実行するための構文。エラーが起きても止まりません。</p>
+
+    <hr>
+
+    <h2 id="data-processing">🧰 データ処理のテクニック</h2>
+
+    <h3 id="split">split()</h3>
+    <p>文字列を指定した区切り文字で分割する関数。例：<code>"A,B,C".split(",")</code> → <code>["A", "B", "C"]</code></p>
+
+    <h3 id="count">count()</h3>
+    <p>文字列の中に、特定の文字が何回出てくるかを数える関数。例：<code>"★★★☆☆".count("★")</code> → <code>3</code></p>
+
+    <h3 id="strip">strip()</h3>
+    <p>文字列の前後の空白や改行を取り除きます。</p>
+
+    <h3 id="lower">lower()</h3>
+    <p>英字をすべて小文字に変換する関数。例：<code>"Hello".lower()</code> → <code>"hello"</code></p>
+
+    <h3 id="isdigit">isdigit()</h3>
+    <p>文字列が数字だけで構成されているかを確認します。例：<code>"1234".isdigit()</code> → <code>True</code></p>
+
+    <h3 id="replace">replace()</h3>
+    <p>文字列の中の一部を別の文字に置き換えます。例：<code>"¥3000".replace("¥", "")</code> → <code>"3000"</code></p>
+
+    <hr>
+
+    <h2 id="web-concepts">🌐 Webの仕組み</h2>
+
+    <h3 id="url">URL</h3>
+    <p>Webページの「住所」のようなもの。例：<code>https://example.com</code></p>
+
+    <h3 id="http">HTTP</h3>
+    <p>ブラウザとサーバーが通信するためのルール。スクレイピングでもこの仕組みを使います。</p>
+
+    <h3 id="user-agent">User-Agent</h3>
+    <p>「自分がどのブラウザか」を伝えるための文字列。スクレイピングでは人間のふりをするときに使います。</p>
+
+    <h3 id="robots">robots.txt</h3>
+    <p>Webサイトの管理者が「ここはスクレイピングしないで」と伝えるファイル。マナーとして確認しましょう。</p>
+
+    <hr>
+    <p><a href="./challenges/index.html">← 課題集トップへ戻る</a></p>
+</body>
+</html>

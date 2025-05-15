@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>スクレイピング入門</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>スクレイピング入門</h1>
+    <p>以下はローカルで実行中の練習サイトへのリンクです（Flask起動中である必要があります）。</p>
+    
+    <ul>
+    <li><a href="http://localhost:5000/products" target="_blank">商品一覧ページ</a></li>
+    <li><a href="http://localhost:5000/article" target="_blank">ニュース記事ページ</a></li>
+    <li><a href="http://localhost:5000/reviews" target="_blank">レビュー一覧ページ</a></li>
+    </ul>
+    
+    
+    <h2>基本コード</h2>
+    <pre><code>
+import requests
+from bs4 import BeautifulSoup
+
+res = requests.get("http://localhost:5000/products")
+soup = BeautifulSoup(res.text, "html.parser")
+
+for p in soup.select(".product"):
+    print(p.select_one(".title").text)
+    </code></pre>
+</body>
+</html>

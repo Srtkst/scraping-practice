@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>スクレイピング課題: 記事ページ</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <h1>スクレイピング課題: 記事ページ</h1>
+  <p><a href="../index.html">← 解説ページへ戻る</a></p>
+
+  <h2>初級</h2>
+  <div class="challenge">
+    <h3>記事タイトル・著者・日付を取得してください。</h3>
+    <p><strong>ヒント:</strong> `.headline`, `.author`, `.date` クラスを利用</p>
+    <pre><code>title = soup.select_one(".headline").text
+author = soup.select_one(".author").text
+date = soup.select_one(".date").text</code></pre>
+  </div>
+
+  <h2>中級</h2>
+  <div class="challenge">
+    <h3>記事本文を1文ずつリストに分割して取得してください。</h3>
+    <p><strong>ヒント:</strong> `.content` を `.text.split("。")` で分割</p>
+    <pre><code>content = soup.select_one(".content").text
+sentences = content.split("。")</code></pre>
+  </div>
+
+  <h2>用語解説</h2>
+  <ul>
+    <li><a href="../glossary.html#select_one">select_one()</a></li>
+    <li><a href="../glossary.html#split">split()</a></li>
+  </ul>
+</body>
+</html>
